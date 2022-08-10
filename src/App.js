@@ -14,6 +14,8 @@ https://stackoverflow.com/questions/62776866/how-to-show-image-from-api-in-javas
 https://developer.mozilla.org/en-US/docs/Web/API/Response/json
 https://www.youtube.com/watch?v=o7c_RRUTQHo&t=600s&ab_channel=QuentinWattTutorials
 https://codepen.io/adityajanuardi/pen/YzydaVj
+https://stackoverflow.com/questions/22876978/loop-inside-react-jsx
+https://stackoverflow.com/questions/42854494/how-do-i-retrieve-images-from-json-into-react
 */
 
 // ================================ 1 image ==================================
@@ -48,11 +50,21 @@ https://codepen.io/adityajanuardi/pen/YzydaVj
 
 // =============================== multiple images =========================================
 
+let makeImge =(gallery) => {
+  for(let i = 0; i < 5000; i++){
+    <div class="container">
+      <h1>{gallery[i]['title']}</h1>
+      <img src = {gallery[i]['url']}></img>
+      console.log(i);
+    </div>
+  }
+}
+
+
+
 function App() {
-  // const { id } = useParams()
-  const url = `https://jsonplaceholder.typicode.com/photos`;
+  const url = 'https://jsonplaceholder.typicode.com/photos';
   const [gallery, setImage] = useState(null) // by default image will be null
-  
 
   useEffect(() => {
     axios.get(url)
@@ -61,17 +73,28 @@ function App() {
     })
   }, [url])
 
+  // if(gallery) {
+  //   for(let i = 0; i < 5000; i++){
+  //     <div class="container">
+  //       <h1>{gallery[i]['title']}</h1>
+  //       <img src = {gallery[i]['url']}></img>
+  //     </div>
+  //   }
+  // }
+  // if(gallery) {
+  //   for(let i = 0; i < 5000; i++){
+  //     <div class="container">
+  //       <h1>{gallery[i]['title']}</h1>
+  //       <img src = {gallery[i]['url']}></img>
+  //     </div>
+  //   }
+  // }
+
   if(gallery){
+    makeImge(gallery)
+
     return (
-      <div>
-        <h1>{gallery[0]['title']}</h1>
-        <img src = {gallery[0]['url']}></img>
-        <h1>{gallery[1]['title']}</h1>
-        <img src = {gallery[1]['url']}></img>
-        <h1>{gallery[2]['title']}</h1>
-        <img src = {gallery[2]['url']}></img>
-      </div>
-    );
+    )
   }
     
   return (
