@@ -1,6 +1,8 @@
 import React from 'react'
 
-export default function Img({ image }) {
+export default function Img({ image }){
+
+
   return (
     <div className = "component">
         <img src={image.url} alt={image.title} loading="lazy"/> 
