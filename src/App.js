@@ -1,7 +1,7 @@
-import './App.css';
 import './style.css';
 import React, { useEffect, useState } from 'react'; 
 import axios from 'axios';
+import Gallery from './Gallery'
 
 /* Resources
 http://jsonplaceholder.typicode.com/
@@ -17,6 +17,7 @@ https://stackoverflow.com/questions/22876978/loop-inside-react-jsx
 https://stackoverflow.com/questions/42854494/how-do-i-retrieve-images-from-json-into-react
 */
 
+
 function App() {
   const url = 'https://jsonplaceholder.typicode.com/photos';
   const [gallery, setImage] = useState(null) // by default image will be null
@@ -30,14 +31,9 @@ function App() {
 
   if(gallery){
     return (
-      <div className = "container">              
-        {gallery.map((photo) => (
-          <div className = "component">
-            <img src={photo.url} alt={photo.title} loading="lazy"/> 
-            <p>{photo.title}</p> 
-          </div>
-          ))}
-        
+      <div className = "container"> 
+      <Gallery input = { gallery } />
+      <button onclick="myFunction()">Randomize</button>
       </div>
     )
   }
