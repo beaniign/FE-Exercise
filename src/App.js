@@ -2,6 +2,10 @@ import logo from './logo.svg';
 import './App.css';
 import React, { useEffect, useState } from 'react'; 
 import axios from 'axios';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
+import ImageListItemBar from '@mui/material/ImageListItemBar';
+
 // import { useParams } from 'react-router-dom'
 
 /* Resources
@@ -50,16 +54,6 @@ https://stackoverflow.com/questions/42854494/how-do-i-retrieve-images-from-json-
 
 // =============================== multiple images =========================================
 
-let makeImge =(gallery) => {
-  for(let i = 0; i < 5000; i++){
-    <div class="container">
-      <h1>{gallery[i]['title']}</h1>
-      <img src = {gallery[i]['url']}></img>
-      console.log(i);
-    </div>
-  }
-}
-
 
 
 function App() {
@@ -72,6 +66,8 @@ function App() {
       setImage(response.data);
     })
   }, [url])
+
+  let itemData;
 
   // if(gallery) {
   //   for(let i = 0; i < 5000; i++){
@@ -91,10 +87,16 @@ function App() {
   // }
 
   if(gallery){
-    makeImge(gallery)
 
     return (
+      <div className = "container">
+        {gallery.map((photo) => (
+          <img src={photo.url} alt={photo.title} loading="lazy"/> 
+          ))}
+        
+      </div>
     )
+
   }
     
   return (
