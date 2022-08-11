@@ -19,13 +19,26 @@ https://stackoverflow.com/questions/42854494/how-do-i-retrieve-images-from-json-
 https://jack72828383883.medium.com/how-to-preload-images-into-cache-in-react-js-ff1642708240
 */
 
-function getRandomInt(max) {
+let counter = 0;
+const max = 5000;
+let tracker = 0;
+
+function getRndNum(max) {
   return Math.floor(Math.random() * max);
 }
 
-function myFunction(gallery, rerender, setRerender) {
-  gallery[0] = gallery[getRandomInt(5000)];
-  setRerender(!rerender); 
+function myFunction(gallery, rerender, setRerender, counter) {
+  gallery[counter] = gallery[getRndNum(max)];
+  counter++;
+  if(counter === max) {
+    setRerender(!rerender); 
+    counter = 0;
+    tracker++;
+    alert("randomized " + tracker + " time(s)");
+  } else {
+    myFunction(gallery, rerender, setRerender, counter);
+    console.log("randomized" + counter);
+  }
 }
 
 function App() {
@@ -42,12 +55,10 @@ function App() {
 
 
   if(gallery){
-    // const arr = [];
-    // gallery.forEach(image => arr.push(image));
     return (
       <div className = "container"> 
       <Gallery input = { gallery } />
-      <button onClick= {() => myFunction(gallery, rerender, setRerender) }>Randomize</button>
+      <button onClick= {() => myFunction(gallery, rerender, setRerender, counter) }>Randomize</button>
       </div>
     )
   }
