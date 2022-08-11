@@ -2,9 +2,11 @@
 
 ## Project Requirements & Prompt
 
-Platform: React
-Language/framework: React (https://facebook.github.io/react-native/)
-Requirements: Create a simple web app that accomplishes the following:
+Platform: React\
+
+Language/framework: React (https://facebook.github.io/react-native/)\
+
+Requirements: Create a simple web app that accomplishes the following:\
 
 1. When the app starts, fetch /photos JSON data from the http://jsonplaceholder.typicode.com website
 2. Create a horizontally scrollable list of photos that represent the data you fetched. Each photo should have the “title” text written diagonally across the photo, have rounded corners, a border, and should have a drop shadow.  This should scroll smoothly.
