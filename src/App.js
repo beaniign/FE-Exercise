@@ -1,4 +1,5 @@
 import './App.css';
+import './style.css';
 import React, { useEffect, useState } from 'react'; 
 import axios from 'axios';
 
@@ -27,18 +28,18 @@ function App() {
     })
   }, [url])
 
-
   if(gallery){
-
     return (
-      <div className = "container">
+      <div className = "container">              
         {gallery.map((photo) => (
-          <img src={photo.url} alt={photo.title} loading="lazy"/> 
+          <div className = "component">
+            <img src={photo.url} alt={photo.title} loading="lazy"/> 
+            <p>{photo.title}</p> 
+          </div>
           ))}
         
       </div>
     )
-
   }
     
   return (

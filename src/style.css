@@ -1,0 +1,29 @@
+img {
+    border-radius: 25px;
+    border-style: solid;
+    box-shadow: 10px 10px #888888;
+    display: block;
+    width: 600px;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  
+  .component {
+    position: relative;
+    text-align: center;
+    margin: 2%;
+  }
+  
+  p {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    position: absolute;
+    top:300px;
+    transform: rotate(45deg);
+    width: 100%;
+  }
+  
+  
