@@ -21,23 +21,22 @@ https://jack72828383883.medium.com/how-to-preload-images-into-cache-in-react-js-
 
 let counter = 0;
 const max = 5000;
-let tracker = 0;
 
 function getRndNum(max) {
   return Math.floor(Math.random() * max);
 }
 
-function myFunction(gallery, rerender, setRerender, counter) {
-  gallery[counter] = gallery[getRndNum(max)];
+function randomize(gallery, rerender, setRerender, counter) {
+  let temp = gallery[counter];
+  let rnd = getRndNum(max);
+  gallery[counter] = gallery[rnd];
+  gallery[rnd] = temp;
   counter++;
-  if(counter === max) {
-    setRerender(!rerender); 
-    counter = 0;
-    tracker++;
-    alert("randomized " + tracker + " time(s)");
+  if(counter === max) {        // base case - when all 5000 entries of the array has been randomized
+    setRerender(!rerender);    //             rerender the components
+    counter = 0;               //             reset counter to 0 for next button press
   } else {
-    myFunction(gallery, rerender, setRerender, counter);
-    console.log("randomized" + counter);
+    randomize(gallery, rerender, setRerender, counter);  // recursive call
   }
 }
 
@@ -58,7 +57,7 @@ function App() {
     return (
       <div className = "container"> 
       <Gallery input = { gallery } />
-      <button onClick= {() => myFunction(gallery, rerender, setRerender, counter) }>Randomize</button>
+      <button onClick= {() => randomize(gallery, rerender, setRerender, counter) }>Randomize</button>
       </div>
     )
   }
