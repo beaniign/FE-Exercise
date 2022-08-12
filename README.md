@@ -14,9 +14,9 @@
 4. Add a button to the screen below the scrollable photo list. Tapping this button will reorder the list in completely random order. Use a recursive function to reorder the list.
 
 ## Resources
-http://jsonplaceholder.typicode.com/
-https://www.digitalocean.com/community/tutorials/react-axios-react
-https://betterprogramming.pub/creating-a-simple-app-with-react-js-f6aa88998952
-https://www.youtube.com/watch?v=o7c_RRUTQHo&t=600s&ab_channel=QuentinWattTutorials
-https://codepen.io/adityajanuardi/pen/YzydaVj
+http://jsonplaceholder.typicode.com/ </>
+https://www.digitalocean.com/community/tutorials/react-axios-react </>
+https://betterprogramming.pub/creating-a-simple-app-with-react-js-f6aa88998952 </>
+https://www.youtube.com/watch?v=o7c_RRUTQHo&t=600s&ab_channel=QuentinWattTutorials </>
+https://codepen.io/adityajanuardi/pen/YzydaVj </>
 https://stackoverflow.com/questions/10240110/how-do-you-cache-an-image-in-javascript
