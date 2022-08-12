@@ -3,16 +3,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Gallery from './Gallery';
 
-
-/* Resources
-http://jsonplaceholder.typicode.com/
-https://www.digitalocean.com/community/tutorials/react-axios-react
-https://betterprogramming.pub/creating-a-simple-app-with-react-js-f6aa88998952
-https://www.youtube.com/watch?v=o7c_RRUTQHo&t=600s&ab_channel=QuentinWattTutorials
-https://codepen.io/adityajanuardi/pen/YzydaVj
-https://stackoverflow.com/questions/10240110/how-do-you-cache-an-image-in-javascript
-*/
-
 let counter = 0;
 const max = 4999;
 
