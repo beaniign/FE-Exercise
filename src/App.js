@@ -6,24 +6,30 @@ import Gallery from './Gallery';
 
 /* Resources
 http://jsonplaceholder.typicode.com/
-http://jsonplaceholder.typicode.com/guide/
-https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
+https://www.digitalocean.com/community/tutorials/react-axios-react
 https://betterprogramming.pub/creating-a-simple-app-with-react-js-f6aa88998952
-https://thewebdev.info/2021/11/14/how-to-fetch-image-from-api-with-react/
-https://stackoverflow.com/questions/62776866/how-to-show-image-from-api-in-javascript
-https://developer.mozilla.org/en-US/docs/Web/API/Response/json
 https://www.youtube.com/watch?v=o7c_RRUTQHo&t=600s&ab_channel=QuentinWattTutorials
 https://codepen.io/adityajanuardi/pen/YzydaVj
-https://stackoverflow.com/questions/22876978/loop-inside-react-jsx
-https://stackoverflow.com/questions/42854494/how-do-i-retrieve-images-from-json-into-react
-https://jack72828383883.medium.com/how-to-preload-images-into-cache-in-react-js-ff1642708240
+https://stackoverflow.com/questions/10240110/how-do-you-cache-an-image-in-javascript
 */
 
 let counter = 0;
-const max = 5000;
+const max = 4999;
 
-function getRndNum(max) {
+function getRndNum(max) {                                // returns a random number between 0 and 4999          
   return Math.floor(Math.random() * max);
+}
+
+function cacheImages(gallery) {                          // explicit caching function - may not be necessary
+  if (!cacheImages.list) {
+    cacheImages.list = [];
+  }
+  let list = cacheImages.list;
+  for (let i = 0; i < gallery.length; i++) {
+      let img = new Image();
+      list.push(img);
+      img.src = gallery[i];
+  }
 }
 
 function randomize(gallery, rerender, setRerender, counter) {
@@ -32,20 +38,20 @@ function randomize(gallery, rerender, setRerender, counter) {
   gallery[counter] = gallery[rnd];
   gallery[rnd] = temp;
   counter++;
-  if(counter === max) {        // base case - when all 5000 entries of the array has been randomized
-    setRerender(!rerender);    //             rerender the components
-    counter = 0;               //             reset counter to 0 for next button press
+  if(counter > max) {                                    // base case - when all 5000 entries of the array has been randomized
+    setRerender(!rerender);                              //             rerender the components
+    counter = 0;                                         //             reset counter to 0 for next button press
   } else {
     randomize(gallery, rerender, setRerender, counter);  // recursive call
   }
 }
 
 function App() {
-  const [rerender, setRerender] = useState(false);
   const url = 'https://jsonplaceholder.typicode.com/photos';
-  const [gallery, setImage] = useState(null) // by default image will be null
+  const [rerender, setRerender] = useState(false);
+  const [gallery, setImage] = useState(null)             // by default image will be null
   
-  useEffect(() => {
+  useEffect(() => {                                      // makes API call and fetches images
     axios.get(url)
     .then(response => {
       setImage(response.data);
@@ -53,7 +59,8 @@ function App() {
   }, [url])
 
 
-  if(gallery){
+  if(gallery){                                           // if guard so we don't do anything with null
+    cacheImages(gallery);
     return (
       <div className = "container"> 
       <Gallery input = { gallery } />
