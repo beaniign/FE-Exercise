@@ -1,10 +1,8 @@
-# Convergence Concept Inc FE (Front End) Exercise
+# Front-end Exercise
 
 ## Project Requirements & Prompt
 
-**Platform:** React
-
-**Language/framework:** React (https://facebook.github.io/react-native/)
+**Language/framework:** HTML, CSS, JavaScript, React
 
 **Requirements:** Create a simple web app that accomplishes the following:
 
