@@ -1,4 +1,4 @@
-# Front-end Exercise
+# Photo Randomizer
 
 ## Project Requirements & Prompt
 
